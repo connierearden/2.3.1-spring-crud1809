@@ -5,6 +5,7 @@ import crud.dao.UserDao;
 import crud.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,11 +13,42 @@ import java.util.List;
 public class UserServiceImpl implements  UserService {
     @Autowired
     private UserDao userDao;
+
+    @Transactional
     @Override
-    public List<User> getAllUser() {
-        return userDao.getAllUsers();
+    public List getAllUsers() { return userDao.getAllUsers();
     }
 
+    @Transactional
     @Override
-    public void add(User user) { userDao.add(user); }
+    public void addUser(User user) {
+        if (!user.getName().isEmpty() || !user.getPassword().isEmpty()) {
+            userDao.addUser(user);
+        }
+    }
+
+    @Transactional
+    @Override
+    public User findUserById(Long id) {
+        if (id!=null) {
+            return userDao.findUserById(id);
+        }
+        return null;
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(Long id) {
+        if (id!=null) {
+            userDao.deleteUser(id);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void updateUser(User user) {
+        if (user.getName().isEmpty() && user.getPassword().isEmpty()){
+            userDao.updateUser(user);
+        }
+    }
 }
