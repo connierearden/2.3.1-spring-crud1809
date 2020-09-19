@@ -25,7 +25,7 @@
         <td th:utext="${user.age}">Name</td>
         <td th:utext="${user.password}">series</td>
         <td th:utext="${user.role}">status</td>
-        <td><button type="button"><a href="/users/update">Update</a></button></td>
+        <td><button type="button"><a th:href="@{/update/{id}(id=${user.id})}">Update</a></button></td>
         <td><button type="button"><a th:href="@{/users/{id}(id=${user.getId()})}">delete</a></button></td>
 </table>
 <button type="button"><a href="/users/new">Create new user</a></button>

@@ -45,5 +45,4 @@ public class UserDaoImpl implements UserDao {
         query.executeUpdate();
     }
 
-
 }
