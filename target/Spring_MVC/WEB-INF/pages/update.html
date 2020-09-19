@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Car</title>
+    <style>
+        table th, table td {padding: 5px;}
+    </style>
+</head>
+<title>Title</title>
+</head>
+<body>
+<form th:action="@{/update}" method="post" th:object="${user}">
+    <input type="hidden" name="id" th:value="${user.id}">
+    <label th:for="name">UserName </label>
+    <input type="text" name="name" th:id="userName" th:value="${user.name}">
+    <label th:for="password">Password </label>
+    <input type="text" name="password" th:id="password" th:value="${user.password}">
+    <input type="hidden" name="id" th:value="${user.id}">
+</form>
+</body>
+</html>
